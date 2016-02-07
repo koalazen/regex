@@ -1,4 +1,3 @@
-from heapq import heappush, heappop
 import benchmark
 import re
 
@@ -123,7 +122,6 @@ class NFA(object):
 class Regex(object):
 
     _op_symbols = ['+', '*', '?']
-    _op_precedence = {'concat': 2, '+': 1, '*': 1, '?': 1}
 
     def __init__(self, pattern):
         self._nfa = self._parse(pattern)
