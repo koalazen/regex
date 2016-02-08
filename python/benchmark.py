@@ -11,9 +11,9 @@ def benchmark(f, num_times):
     return (end - start) / float(num_times)
 
 
-def benchmark_micros(f, precision=3):
-    elapsed = benchmark(f, 100000)
-    print "{{:.{precision}}} microseconds".format(precision=precision).format(elapsed * 1e6)
+def benchmark_micros(f):
+    elapsed = benchmark(f, 10000)
+    return elapsed * 1e6
 
 
 def main():
@@ -23,12 +23,17 @@ def main():
     r = regex.Regex(pattern)
     r2 = re.compile(pattern)
 
-    print r.match(test)
+    print "Custom implementation matches:", "yes" if r.match(test) else "no"
     m = r2.match(test)
-    print m is not None and m.group(0) == test
+    match = m is not None and m.group(0) == test
+    print "Re module implementation matches:", "yes" if match else "no"
 
-    benchmark_micros(lambda: r.match(test))
-    benchmark_micros(lambda: r2.match(test))
+    print "Custom implementation runs in {{:.{precision}}} microseconds".format(
+        precision=3).format(
+        benchmark_micros(lambda: r.match(test)))
+    print "Re module implementation runs in {{:.{precision}}} microseconds".format(
+        precision=3).format(
+        benchmark_micros(lambda: r2.match(test)))
 
 if __name__ == "__main__":
     main()

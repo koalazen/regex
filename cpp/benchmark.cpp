@@ -17,7 +17,7 @@ double benchmark_micros(const F& f, int num_times = 10000) {
     f();
   }
   auto end = std::clock();
-  return ((end - start) / num_times) / (CLOCKS_PER_SEC / 1e6);
+  return ((end - start) / num_times) / ((double)CLOCKS_PER_SEC / 1e6);
 }
 
 int main() {
