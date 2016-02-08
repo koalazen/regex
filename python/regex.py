@@ -1,7 +1,3 @@
-import benchmark
-import re
-
-
 class State(object):
 
     def __init__(self):
@@ -176,21 +172,3 @@ class Regex(object):
             i += 1
         a.concat(b)
         return a
-
-
-def main():
-    pattern = '(fo)*(bo)*'
-    test = 'fobobo'
-
-    r = Regex(pattern)
-    r2 = re.compile(pattern)
-
-    print r.match(test)
-    m = r2.match(test)
-    print m is not None and m.group(0) == test
-
-    benchmark.benchmark_micros(lambda: r.match(test))
-    benchmark.benchmark_micros(lambda: r2.match(test))
-
-if __name__ == "__main__":
-    main()
