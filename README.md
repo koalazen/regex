@@ -11,11 +11,11 @@ The implementation is based on: https://swtch.com/~rsc/regexp/regexp1.html
 
 #### C++:
 * Compilation flags: -O3
-* this implementation: 13 microseconds
-* stdlib implementation: 2 microseconds
+* this implementation: 13 &#181; (microseconds)
+* stdlib implementation: 2 &#181;
 
 #### Python: 
-* this implementation: 6.53 microseconds
-* Re module implementation: 0.77 microseconds
+* this implementation: 6.53 &#181;
+* Re module implementation: 0.77 &#181;
 
 Note: I am surprised that this is faster than the C++ implementation.
